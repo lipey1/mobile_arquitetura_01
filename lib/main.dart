@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 import 'package:provider/provider.dart';
 
 import 'core/network/http_client.dart';
@@ -16,6 +18,9 @@ import 'presentation/pages/product_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  if (kIsWeb) {
+    SemanticsBinding.instance.ensureSemantics();
+  }
 
   final httpClient = HttpClient();
   final sessionManager = SessionManager();
